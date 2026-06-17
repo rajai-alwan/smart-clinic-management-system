@@ -1,28 +1,25 @@
-<?php 
-$host = "localhost";
-$user = "root";
-$password = "";
-$db = "pms_db";
-try {
+<?php
+$host = "sql202.infinityfree.com";
+$user = "if0_42068473";
+$password = "Rr0599418690";
+$db = "if0_42068473_pms";
 
-  $con = new PDO("mysql:dbname=$db;port=3306;host=$host", 
-  	$user, $password);
-  // set the PDO error mode to exception
-  $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  
-  //echo "Connected successfully";
+try {
+    $con = new PDO("mysql:dbname=$db;port=3306;host=$host", $user, $password);
+    // set the PDO error mode to exception
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // لضمان دعم اللغة العربية بشكل سليم على السيرفر
+    $con->exec("set names utf8"); 
+    
 } catch(PDOException $e) {
-  echo "Connection failed: ".
-   $e->getMessage();
-  echo $e->getTraceAsString();
-  exit;
+    echo "Connection failed: ";
+    $e->getMessage();
+    echo $e->getTraceAsString();
+    exit;
 }
 
 session_start();
 
-//24 minutes default idle time
-// if(isset($_SESSION['ABC'])) {
-// 	unset($_SESSION['ABC']);
-// }
-
+// बाकी الأسطر الملعّق عليها في ملفك تترك كما هي...
 ?>
